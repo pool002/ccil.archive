@@ -10,7 +10,7 @@ Follow these commands to get started.
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/pool002/ccil.archive.git
 
 # Navigate to the project directory
 cd ccil.archive
