@@ -1,18 +1,52 @@
-### CCIL Archive Downloader
+## CCIL Archive Downloader
 
-A Python-based utility to download, archive, and transform CCIL Excel data into a structured and formatted Excel workbook.
+### Download. Archive. Transform.
 
-The application uses a Python virtual environment (venv) to manage dependencies and keep the project isolated from system-wide Python packages.
-----------------------------------------------------------------------------------------------
-Features:
+A Python-based utility to download, archive, sanitize, and transform CCIL Excel data into structured and formatted workbooks.
+
+⚡ Quick Start
+
+Follow these commands to get started.
+
+```bash
+# Clone the repository
+git clone <repository-url>
+
+# Navigate to the project directory
+cd ccil.archive
+
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate the environment (Linux / macOS)
+source venv/bin/activate
+
+# Upgrade pip
+python -m pip install --upgrade pip
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+python3 archive-downloader.py
+```
+
+Windows (Command Prompt): Replace the activation command with:
+
+```
+venv\Scripts\activate
+```
+-----------------------------------------------------------------
+📋 Features
 Download raw archive data from CCIL.
 Export downloaded data into Excel (.xlsx) format.
 Organize data into individual worksheets.
-Sanitize downloaded data before exporting.
-Calculate aggregate totals and generate a Total row.
-Preserve the original raw Excel archive.
-
-Project Structure:
+Sanitize source data before exporting.
+Calculate aggregate totals and append a Total row.
+Apply structured Excel formatting.
+Preserve the original raw archive.
+📁 Project Structure
+```
 ccil.archive/
 │
 ├── venv/                       # Python virtual environment
@@ -23,91 +57,90 @@ ccil.archive/
 ├── README.md                   # Project documentation
 │
 └── ...                         # Generated Excel archives
-----------------------------------------------------------------------------------------------
-Prerequisites
+```
 
-Ensure the following are installed:
-- Python 3.14 (or a compatible Python version)
-- pip
-- Git (if cloning the repository)
-
-Check your Python installation:
-
+⚙️ Prerequisites
+```
+Python 3.14 (or a compatible Python version)
+pip
+Git (for cloning the repository)
+```
+Verify your installations:
+```
 python3 --version
-
-Check pip:
-
 pip --version
+```
 
-Getting Started
-1. Clone the repository
-
+🛠️ Installation & Setup
+1. Clone the Repository
+bash
 git clone <repository-url>
-
-Navigate into the project directory:
-
 cd ccil.archive
 
-2. Create a virtual environment
-
-Create an isolated Python environment:
-
+2. Create a Virtual Environment
+bash
 python3 -m venv venv
 
-3. Activate the virtual environment
+3. Activate the Environment
 
-Linux / macOS:
+Linux / macOS
+
+bash
 source venv/bin/activate
 
 
-Windows (Command Prompt):
+Windows (Command Prompt)
 
+cmd
 venv\Scripts\activate
 
 
-Once activated, your terminal should display (venv).
+The terminal prompt should display (venv) when the environment is active.
 
-4. Upgrade pip
-
+4. Install Dependencies
+bash
 python -m pip install --upgrade pip
-
-5. Install dependencies
-
-Install all required packages:
-
 pip install -r requirements.txt
 
 
-The current dependency versions are:
+Current dependency versions:
 
 Package	Version
 pandas	3.1.1
 openpyxl	3.1.5
 requests	2.34.2
-Running the Application
+▶️ Running the Application
 
-Make sure your virtual environment is activated.
-----------------------------------------------------------------------------------------------
+Ensure the virtual environment is activated and execute:
 
-### Execute the main application:
-
+bash
 python3 archive-downloader.py
 
 
-The application will initiate the archive download and process the retrieved data.
+The application downloads the CCIL archive and processes the retrieved Excel data.
 
-Output
+📊 Output & Transformation
 
-Upon successful execution, the application generates Excel archive files.
+Successful execution generates two Excel files:
 
-Raw archive:
+1. Raw Archive
+text
 <user_val>_raw_archive_<timestamp>.xlsx
 
-Beautified archive:
+
+Contains the original downloaded archive.
+
+2. Beautified Archive
+text
 beautified_<user_val>_raw_archive_<timestamp>.xlsx
 
 
-The beautification process:
+Contains the processed and formatted workbook.
+
+Beautification Process
+
+The beautify.py module performs the following operations:
+
 Reads the result1 worksheet.
 Removes the unnecessary dfar_id column.
 Maps source columns to the required output headers.
@@ -116,21 +149,13 @@ Calculates aggregate totals.
 Appends a Total row.
 Applies Excel formatting.
 Exports a separate formatted .xlsx file.
-
-The original raw archive is retained.
-----------------------------------------------------------------------------------------------
-Deactivating the Virtual Environment
-
-Once execution is complete, deactivate the virtual environment:
-
-deactivate
-----------------------------------------------------------------------------------------------
-Troubleshooting
-Issue	Suggested solution
-ModuleNotFoundError	Activate venv and install dependencies again.
+Note: The original raw archive is retained and never overwritten by the beautification process.
+🔧 Troubleshooting
+Issue	Suggested Solution
+ModuleNotFoundError	Activate venv and reinstall dependencies.
 Permission denied	Check directory and file permissions.
 Sheet 'result1' not found	Verify that the downloaded workbook contains the required worksheet.
-Excel transformation failed	Verify the required source columns and Excel file integrity.
+Excel transformation failed	Verify required source columns and Excel file integrity.
 Dependency installation failed	Upgrade pip and retry installation.
 
 To reinstall dependencies:
@@ -138,34 +163,18 @@ To reinstall dependencies:
 bash
 pip install -r requirements.txt
 
-Important Notes
+📝 Important Notes
 Always activate the virtual environment before running the application.
-Do not manually modify files inside the venv directory.
+Do not manually modify files inside venv/.
 Keep archive-downloader.py, beautify.py, and requirements.txt in the project directory.
 Do not commit the virtual environment to Git.
-Keep downloaded archive files backed up as required.
-Quick Start
+Back up downloaded archive files as required.
+Deactivate the Virtual Environment
 
-For users who want to get started quickly:
+When finished, execute:
 
 bash
-# Clone repository
-git clone <repository-url>
-
-# Navigate to project
-cd ccil.archive
-
-# Create virtual environment
-python3 -m venv venv
-
-# Activate virtual environment
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run application
-python3 archive-downloader.py
+deactivate
 
 
 CCIL Archive Downloader
